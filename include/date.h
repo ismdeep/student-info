@@ -16,7 +16,7 @@ typedef struct {
 
 char *date_to_string(const Date *date) {
     char *res = (char *) malloc(sizeof(char) * 1024);
-    sprintf(res, "%d-%d-%d", date->year, date->month, date->day);
+    sprintf(res, "%04d-%02d-%02d", date->year, date->month, date->day);
     return res;
 }
 

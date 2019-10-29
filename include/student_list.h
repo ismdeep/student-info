@@ -5,6 +5,7 @@
 #ifndef STUDENT_LIST_H
 #define STUDENT_LIST_H
 
+#include <stdbool.h>
 #include <student.h>
 
 typedef struct {
@@ -64,6 +65,41 @@ void student_list_print(const StudentList *list) {
     printf("------------------------------------------------------------------------\n");
     for (int i = 0; i < list->cnt; ++i) {
         printf("%s\n", student_to_string(&list->list[i]));
+    }
+}
+
+Student *student_list_query_by_id(const StudentList *list, char *id_str) {
+    for (int i = 0; i < list->cnt; ++i) {
+        if (strcmp(list->list[i].id, id_str) == 0) {
+            return &list->list[i];
+        }
+    }
+    return NULL;
+}
+
+Student *student_list_query_by_name(const StudentList *list, char *name_str) {
+    for (int i = 0; i < list->cnt; ++i) {
+        if (strcmp(list->list[i].name, name_str) == 0) {
+            return &list->list[i];
+        }
+    }
+    return NULL;
+}
+
+typedef bool (*fun_t)(const Student*, const Student*);
+
+void *student_list_sort(StudentList *list, fun_t cmp) {
+    for (int left = 0; left <= list->cnt - 2; left++) {
+        int m = left;
+        for (int i = left + 1; i < list->cnt; i++) {
+            if (!cmp(&list->list[m], &list->list[i])) {
+                m = i;
+            }
+        }
+        Student tmp;
+        tmp = list->list[left];
+        list->list[left] = list->list[m];
+        list->list[m] = tmp;
     }
 }
 
