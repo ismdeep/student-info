@@ -7,9 +7,14 @@
 #include <student_list.h>
 #include <config.h>
 
+void help_msg() {
+    printf("Usage: student_query -id|-name ${id}\n");
+}
+
 int main(int argc, char* argv[])
 {
     if (argc < 3) {
+        help_msg();
         return -1;
     }
 
@@ -35,6 +40,8 @@ int main(int argc, char* argv[])
         printf("%s\n", student_list_table_header());
         printf("%s\n", student_to_string(stu));
     }
+
+    help_msg();
 
     return 0;
 }

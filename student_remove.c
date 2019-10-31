@@ -6,8 +6,13 @@
 #include <student_list.h>
 #include <config.h>
 
+void help_msg() {
+    printf("Usage: student_remove -id|-name ${id}\n");
+}
+
 int main(int argc, char* argv[]) {
     if (argc < 3) {
+        help_msg();
         return -1;
     }
 
@@ -17,8 +22,11 @@ int main(int argc, char* argv[]) {
             printf("%s is not exists.\n", argv[2]);
         } else {
             student_list_print(list);
+            student_list_save(list, student_dat_path());
         }
     }
 
-    return 0;
+    help_msg();
+
+    return -1;
 }
