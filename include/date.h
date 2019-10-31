@@ -5,6 +5,7 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -25,7 +26,7 @@ int date_cal_age(const Date *date) {
 }
 
 Date *parse_date_from_string(const char *str) {
-    Date *date = (struct Date *) malloc(sizeof(Date));
+    Date *date = (Date *) malloc(sizeof(Date));
     sscanf(str, "%d-%d-%d", &date->year, &date->month, &date->day);
     return date;
 }

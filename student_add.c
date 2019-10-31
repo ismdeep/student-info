@@ -7,6 +7,7 @@
 #include <string.h>
 #include <student.h>
 #include <student_list.h>
+#include <config.h>
 
 int main() {
     char id[1024];
@@ -48,9 +49,9 @@ int main() {
     strcpy(student.phone, phone);
     strcpy(student.class_in, class_in);
 
-    StudentList *list = student_list_fetch("student.dat");
+    StudentList *list = student_list_fetch(student_dat_path());
     student_list_add(list, &student);
-    student_list_save(list,"student.dat");
+    student_list_save(list, student_dat_path());
     printf("Added: {%s}\n", student_to_string(&student));
     return 0;
 }

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <student_list.h>
+#include <config.h>
 
 int main(int argc, char* argv[])
 {
@@ -13,7 +14,7 @@ int main(int argc, char* argv[])
     }
 
     if (strcmp(argv[1], "-id") == 0) {
-        StudentList *list = student_list_fetch("student.dat");
+        StudentList *list = student_list_fetch(student_dat_path());
         Student *stu = student_list_query_by_id(list, argv[2]);
         if (NULL == stu) {
             printf("Not Found: {id: \"%s\"}\n", argv[2]);
@@ -25,7 +26,7 @@ int main(int argc, char* argv[])
     }
 
     if (strcmp(argv[1], "-name") == 0) {
-        StudentList *list = student_list_fetch("student.dat");
+        StudentList *list = student_list_fetch(student_dat_path());
         Student *stu = student_list_query_by_name(list, argv[2]);
         if (NULL == stu) {
             printf("Not Found: {name: \"%s\"}\n", argv[2]);

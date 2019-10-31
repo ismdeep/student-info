@@ -7,6 +7,8 @@
 
 #include <stdbool.h>
 #include <student.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
     size_t size;
@@ -41,6 +43,18 @@ void student_list_add(StudentList *list, const Student *student) {
     ++list->cnt;
 }
 
+int student_list_remove_by_id(StudentList *list, const char *id) {
+    int remove_cnt = 0;
+    for (int i = 0; i < list->cnt; i++) {
+        if (strcmp(list->list[i].id, id) == 0) {
+            ++remove_cnt;
+            list->list[i] = list->list[list->cnt-1];
+            --list->cnt;
+        }
+    }
+    return remove_cnt;
+}
+
 void student_list_save(const StudentList *list, const char *path) {
     FILE *fp = fopen(path, "w");
     if (!fp) {
@@ -60,7 +74,7 @@ char *student_list_table_header() {
 }
 
 void student_list_print(const StudentList *list) {
-    printf("Size: %d    Cnt: %d\n", list->size, list->cnt);
+    printf("Size: %lu    Cnt: %lu\n", list->size, list->cnt);
     printf("%s\n", student_list_table_header());
     printf("------------------------------------------------------------------------\n");
     for (int i = 0; i < list->cnt; ++i) {

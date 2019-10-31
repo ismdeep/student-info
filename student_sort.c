@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <student_list.h>
+#include <config.h>
 
 bool cmp_by_id(const Student *a,const Student *b) {
     if (strcmp(a->id, b->id) >= 0) {
@@ -29,7 +30,7 @@ bool cmp_by_birth(const Student *a, const Student *b) {
 }
 
 int main() {
-    StudentList *list = student_list_fetch("student.dat");
+    StudentList *list = student_list_fetch(student_dat_path());
     student_list_print(list);
     student_list_sort(list, cmp_by_birth);
     student_list_print(list);
