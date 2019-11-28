@@ -69,14 +69,14 @@ void student_list_save(const StudentList *list, const char *path) {
 
 char *student_list_table_header() {
     char *str = (char *) malloc(sizeof(char) * 1024);
-    strcpy(str, "      ID            Name Age Sex      Birth   Address       Phone  Class");
+    strcpy(str, "        ID |           Name    Age Sex        Birth            Address       Phone  Class");
     return str;
 }
 
 void student_list_print(const StudentList *list) {
     printf("Size: %lu    Cnt: %lu\n", list->size, list->cnt);
     printf("%s\n", student_list_table_header());
-    printf("------------------------------------------------------------------------\n");
+    printf("-----------+----------------------------------------------------------------------------------\n");
     for (int i = 0; i < list->cnt; ++i) {
         printf("%s\n", student_to_string(&list->list[i]));
     }

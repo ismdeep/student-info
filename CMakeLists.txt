@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)
 project(student_add    C)
 project(student_list   C)
 project(student_query  C)

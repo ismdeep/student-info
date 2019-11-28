@@ -44,7 +44,7 @@ Student *student_create() {
 
 char *student_to_string(const Student *student) {
     char *res = (char *) malloc(sizeof(char) * 1024);
-    sprintf(res, "%8s %15s  %2d   %c %10s %9s %11s %6s",
+    sprintf(res, "%8s | %14s  %5d   %c %12s %18s %11s %6s",
             student->id,
             student->name,
             date_cal_age(&student->birth_date),

@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     StudentList *list = student_list_fetch(student_dat_path());
     Student *student = student_list_query_by_id(list, argv[1]);
     if (NULL == student) {
-        printf("%s is not exists.\n");
+        printf("%s is not exists.\n", argv[1]);
         return 0;
     }
 
