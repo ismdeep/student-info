@@ -52,6 +52,6 @@ int main() {
     StudentList *list = student_list_fetch(student_dat_path());
     student_list_add(list, &student);
     student_list_save(list, student_dat_path());
-    printf("Added: {%s}\n", student_to_string(&student));
+    printf("\n\nAdded: \n%s\n", student_to_content_string(&student));
     return 0;
 }

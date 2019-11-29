@@ -39,6 +39,7 @@ int main(int argc, char* argv[])
         }
         printf("%s\n", student_list_table_header());
         printf("%s\n", student_to_string(stu));
+        return 0;
     }
 
     help_msg();

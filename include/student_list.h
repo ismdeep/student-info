@@ -24,7 +24,7 @@ StudentList *student_list_fetch(char *path) {
 
     FILE *fp = fopen(path, "r");
     if (!fp) {
-        printf("%s not found!\n", path);
+        // printf("%s not found!\n", path);
         return list;
     }
 

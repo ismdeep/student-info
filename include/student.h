@@ -69,6 +69,19 @@ char *student_to_raw_string(const Student *student) {
     return res;
 }
 
+char *student_to_content_string(const Student *student) {
+    char *res = (char *) malloc(1024 * sizeof(char));
+    sprintf(res, "Id:[%s]\nName:[%s]\nSex:[%c]\nBirth Date:[%s]\nAddress:[%s]\nPhone:[%s]\nClass:[%s]",
+            student->id,
+            student->name,
+            student->sex,
+            date_to_string(&student->birth_date),
+            student->address,
+            student->phone,
+            student->class_in);
+    return res;
+}
+
 
 Student *parse_student_from_string(const char *str) {
     Student *student = (Student *) malloc(sizeof(Student));
